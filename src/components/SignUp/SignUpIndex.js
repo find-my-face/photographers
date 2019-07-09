@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
-import { withFirebase } from "../firebase";
+import { withFirebase } from "../Firebase/FirebaseIndex";
 
 const SignUpPage = () => {
   <div>
