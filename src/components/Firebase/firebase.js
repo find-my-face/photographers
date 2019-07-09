@@ -12,7 +12,7 @@ const config = {
   appId: "1:342095524666:web:3de5759e04626187"
 };
 
-export default class Firebase {
+class Firebase {
   constructor() {
     app.initializeApp(config);
 
@@ -36,3 +36,5 @@ export default class Firebase {
 
   users = () => this.db.ref("users");
 }
+
+export default Firebase;
