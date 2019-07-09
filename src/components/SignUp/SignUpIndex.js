@@ -1,16 +1,20 @@
 import React, { Component } from "react";
-import { Link } from "@reach/router";
+import { Link, withRouter } from "@react-router-dom";
+import { compose } from "recompose";
 import { withFirebase } from "../Firebase/FirebaseIndex";
+import { FirebaseContext } from "../Firebase";
 
-const SignUpPage = () => {
+import * as ROUTES from "../../constants/routes";
+
+const SignUpPage = () => (
   <div>
     <h1>Sign Up</h1>
-    <SignUpForm />
-  </div>;
-};
-//up to sign up form base - we just need to tidy up this page, like Robin the German has!!
 
-class SignUpForm extends Component {
+    <SignUpForm />
+  </div>
+);
+
+class SignUpFormBase extends Component {
   state = {
     username: "",
     email: "",
@@ -32,6 +36,7 @@ class SignUpForm extends Component {
           passwordTwo: "",
           error: null
         });
+        this.props.history.push(ROUTES.HOME);
       })
       .catch(error => {
         this.setState({ error });
@@ -93,11 +98,16 @@ class SignUpForm extends Component {
   }
 }
 
-const SignUpLink = () => {
+const SignUpLink = () => (
   <p>
-    <Link to="/login">SIGN UP HERE</Link>
-  </p>;
-};
+    <Link to={ROUTES.SIGN_UP}>SIGN UP HERE</Link>
+  </p>
+);
+
+const SignUpForm = compose(
+  withRouter,
+  withFirebase
+)(SignUpFormBase);
 
 export default SignUpPage;
 export { SignUpForm, SignUpLink };

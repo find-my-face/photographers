@@ -1,5 +1,5 @@
 import React from "react";
-import { Router } from "@reach/router";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navigation from "../Navigation/NavigationIndex";
 import LandingPage from "../Landing";
 import SignUpPage from "../SignUp";
@@ -10,7 +10,7 @@ import AccountPage from "../Account";
 import AdminPage from "../Admin";
 import "../../App.css";
 
-// import * as ROUTES from "../../constants/routes";
+import * as ROUTES from "../../constants/routes";
 
 const App = () => (
   <Router>
@@ -19,13 +19,13 @@ const App = () => (
 
       <hr />
 
-      <LandingPage path="/landing" />
-      <SignUpPage path="/signup" />
-      <SignInPage path="/signin" />
-      <PasswordForgetPage path="/forgottenpassword" />
-      <HomePage path="/home" />
-      <AccountPage path="/account" />
-      <AdminPage path="/admin" />
+      <Route exact path={ROUTES.LANDING} component={LandingPage} />
+      <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+      <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+      <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+      <Route exact path={ROUTES.HOME} component={HomePage} />
+      <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+      <Route path={ROUTES.ADMIN} component={AdminPage} />
     </div>
   </Router>
 );
