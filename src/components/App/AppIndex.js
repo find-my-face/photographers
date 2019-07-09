@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navigation from "../Navigation/NavigationIndex";
-import LandingPage from "../Landing";
-import SignUpPage from "../SignUp";
-import SignInPage from "../SignIn";
-import PasswordForgetPage from "../PasswordForget";
-import HomePage from "../Home";
-import AccountPage from "../Account";
-import AdminPage from "../Admin";
+import LandingPage from "../Landing/LandingIndex";
+import SignUpPage from "../SignUp/SignUpIndex";
+import SignInPage from "../SignIn/SignInIndex";
+import PasswordForgetPage from "../PasswordForget/PasswordForgetIndex";
+import HomePage from "../Home/HomeIndex";
+import AccountPage from "../Account/AccountIndex";
+import AdminPage from "../Admin/AdminIndex";
 import "../../App.css";
 
 import * as ROUTES from "../../constants/routes";

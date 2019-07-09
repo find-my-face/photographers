@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "@react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { compose } from "recompose";
 import { withFirebase } from "../Firebase/FirebaseIndex";
-import { FirebaseContext } from "../Firebase";
+import { FirebaseContext } from "../Firebase/FirebaseIndex";
 
 import * as ROUTES from "../../constants/routes";
 
