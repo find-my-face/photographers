@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
+import AuthUserContext from "./context";
 
 import { withFirebase } from "../Firebase/FirebaseIndex";
 import * as ROUTES from "../../constants/routes";
@@ -20,7 +21,13 @@ const withAuthorisation = condition => Component => {
     }
 
     render() {
-      return <Component {...this.props} />;
+      return (
+        <AuthUserContext.Consumer>
+          {authUser =>
+            condition(authUser) ? <Component {...this.props} /> : null
+          }
+        </AuthUserContext.Consumer>
+      );
     }
   }
 
