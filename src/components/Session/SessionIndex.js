@@ -1,4 +1,6 @@
 import React from "react";
+import withAuthentication from "./withAuthentication";
+import AuthUserContext from "./context";
 
 const SessionIndex = () => {
   return (
@@ -9,3 +11,4 @@ const SessionIndex = () => {
 };
 
 export default SessionIndex;
+export { AuthUserContext, withAuthentication };
