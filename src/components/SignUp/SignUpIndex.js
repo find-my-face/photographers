@@ -8,7 +8,8 @@ const SignUpPage = () => {
     <SignUpForm />
   </div>;
 };
-//up to sign up form base
+//up to sign up form base - we just need to tidy up this page, like Robin the German has!!
+
 class SignUpForm extends Component {
   state = {
     username: "",
