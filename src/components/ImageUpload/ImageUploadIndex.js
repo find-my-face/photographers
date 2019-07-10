@@ -6,18 +6,27 @@ import { withAuthorisation } from "../Session/SessionIndex";
 class ImageUpload extends Component {
   state = {
     loading: false,
-    filenames: [],
+    files: [],
     downloadURLs: [],
-    progress: 0
+    progress: 0,
+    albumName: ""
   };
 
   render() {
+    const { albumName } = this.state;
+    const userID = firebase.auth().currentUser.uid;
     return (
       <div>
+        <form>
+          <label>Album Name</label>
+          <input type="text" onChange={this.handleChange} />
+        </form>
         <FileUploader
           accept="image/*"
           name="image"
-          storageRef={firebase.storage().ref("Photographers/Photographer1")}
+          storageRef={firebase
+            .storage()
+            .ref(`Photographers/${userID}/${albumName}`)}
           onUploadStart={this.handleUploadStart}
           onUploadError={this.handleUploadError}
           onUploadSuccess={this.handleUploadSuccess}
@@ -26,6 +35,10 @@ class ImageUpload extends Component {
       </div>
     );
   }
+
+  handleChange = event => {
+    this.setState({ albumName: event.target.value });
+  };
 
   handleUploadStart = event => {
     this.setState({ loading: true, progress: 0 });
@@ -44,12 +57,11 @@ class ImageUpload extends Component {
       .getDownloadURL();
 
     this.setState(prevState => ({
-      filenames: [...prevState.filenames, filename],
+      files: [...prevState.files, filename],
       downloadURLs: [...prevState.downloadURLs, downloadURL],
       progress: 100,
       loading: false
     }));
-
   };
 }
 
