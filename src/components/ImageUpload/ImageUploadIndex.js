@@ -49,6 +49,7 @@ class ImageUpload extends Component {
       progress: 100,
       loading: false
     }));
+
   };
 }
 
