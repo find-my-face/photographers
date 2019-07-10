@@ -3,7 +3,7 @@ import React from "react";
 const LandingIndex = () => {
   return (
     <div>
-      <h1>hello from LandingIndex</h1>
+      <h1>Welcome to find-my-face for Photographers</h1>
     </div>
   );
 };
