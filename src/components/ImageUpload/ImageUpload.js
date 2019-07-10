@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import FileUploader from "react-firebase-file-uploader";
+import { withAuthorisation } from "../Session/SessionIndex";
 
 class ImageUpload extends Component {
   state = {
@@ -36,10 +37,9 @@ class ImageUpload extends Component {
       .getDownloadURL()
       .then(url => this.setState({ avatarURL: url }));
   }
-        <FileUploader />
-      </div>
-    );
-  }
+
 }
 
-export default ImageUpload;
+const condition = authUser => !!authUser;
+
+export default withAuthorisation(condition)(ImageUpload);
