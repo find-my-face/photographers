@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withFirebase } from "../Firebase/FirebaseIndex";
+import { withFirebase } from "../firebase/FirebaseIndex";
 
 class PasswordChangeForm extends Component {
   state = {

@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
 import { SignUpLink } from "../SignUp/SignUpIndex";
 import { PasswordForgetLink } from "../PasswordForget/PasswordForgetIndex";
-import { withFirebase } from "../Firebase/FirebaseIndex";
+import { withFirebase } from "../firebase/FirebaseIndex";
 import * as ROUTES from "../../constants/routes";
 
 const SignInPage = () => (

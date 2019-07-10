@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { withFirebase } from "../Firebase/FirebaseIndex";
+import { withFirebase } from "../firebase/FirebaseIndex";
 import * as ROUTES from "../../constants/routes";
 
 const PasswordForgetPage = () => (
