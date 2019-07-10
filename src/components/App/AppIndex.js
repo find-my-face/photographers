@@ -9,7 +9,7 @@ import SignInPage from "../SignIn/SignInIndex";
 import PasswordForgetPage from "../PasswordForget/PasswordForgetIndex";
 import HomePage from "../Home/HomeIndex";
 import AccountPage from "../Account/AccountIndex";
-import AdminPage from "../Admin/AdminIndex";
+// import AdminPage from "../Admin/AdminIndex";
 import "../../App.css";
 
 import { withAuthentication } from "../Session/SessionIndex";
@@ -25,7 +25,7 @@ const App = () => (
       <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
       <Route path={ROUTES.HOME} component={HomePage} />
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-      <Route path={ROUTES.ADMIN} component={AdminPage} />
+      {/* <Route path={ROUTES.ADMIN} component={AdminPage} /> */}
     </div>
   </Router>
 );
