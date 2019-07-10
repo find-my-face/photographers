@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import firebase from "firebase";
 import FileUploader from "react-firebase-file-uploader";
 import { withAuthorisation } from "../Session/SessionIndex";
 
@@ -14,9 +15,9 @@ class ImageUpload extends Component {
     return (
       <div>
         <FileUploader
-          accept="images/*"
+          accept="image/*"
           name="image"
-          storageRef={firebase.storage().ref('photographersimages')}
+          storageRef={firebase.storage().ref("photographersimages")}
           onUploadStart={this.handleUploadStart}
           onUploadSuccess={this.handleUploadSuccess}
         />
@@ -25,19 +26,18 @@ class ImageUpload extends Component {
   }
 
   handleUploadStart = event => {
-    this.setState({ loading: true, progress: 0 })
-  }
+    this.setState({ loading: true, progress: 0 });
+  };
 
   handleUploadSuccess = filename => {
-    this.setState({ image: filename, progress: 100, loading: false })
+    this.setState({ image: filename, progress: 100, loading: false });
     firebase
       .storage()
       .ref("photographersimages")
       .child(filename)
       .getDownloadURL()
       .then(url => this.setState({ avatarURL: url }));
-  }
-
+  };
 }
 
 const condition = authUser => !!authUser;

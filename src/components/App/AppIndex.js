@@ -9,6 +9,7 @@ import SignInPage from "../SignIn/SignInIndex";
 import PasswordForgetPage from "../PasswordForget/PasswordForgetIndex";
 import HomePage from "../Home/HomeIndex";
 import AccountPage from "../Account/AccountIndex";
+import ImageUpload from "../ImageUpload/ImageUploadIndex";
 // import AdminPage from "../Admin/AdminIndex";
 import "../../App.css";
 
@@ -16,7 +17,7 @@ import { withAuthentication } from "../Session/SessionIndex";
 
 const App = () => (
   <Router>
-    <div >
+    <div>
       <Navigation />
       <hr />
       <Route exact path={ROUTES.LANDING} component={LandingPage} />
@@ -25,6 +26,7 @@ const App = () => (
       <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
       <Route path={ROUTES.HOME} component={HomePage} />
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+      <Route path={ROUTES.IMAGEUPLOAD} component={ImageUpload} />
       {/* <Route path={ROUTES.ADMIN} component={AdminPage} /> */}
     </div>
   </Router>
