@@ -36,6 +36,10 @@ class ImageUpload extends Component {
       .getDownloadURL()
       .then(url => this.setState({ avatarURL: url }));
   }
+        <FileUploader />
+      </div>
+    );
+  }
 }
 
 export default ImageUpload;
