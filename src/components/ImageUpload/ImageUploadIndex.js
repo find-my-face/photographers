@@ -6,8 +6,8 @@ import { withAuthorisation } from "../Session/SessionIndex";
 class ImageUpload extends Component {
   state = {
     loading: false,
-    image: "",
-    imageURL: "",
+    filenames: [],
+    downloadURLs: [],
     progress: 0
   };
 
@@ -17,9 +17,11 @@ class ImageUpload extends Component {
         <FileUploader
           accept="image/*"
           name="image"
-          storageRef={firebase.storage().ref("photographersimages")}
+          storageRef={firebase.storage().ref("Photographers/Photographer1")}
           onUploadStart={this.handleUploadStart}
+          onUploadError={this.handleUploadError}
           onUploadSuccess={this.handleUploadSuccess}
+          multiple
         />
       </div>
     );
@@ -29,14 +31,25 @@ class ImageUpload extends Component {
     this.setState({ loading: true, progress: 0 });
   };
 
-  handleUploadSuccess = filename => {
-    this.setState({ image: filename, progress: 100, loading: false });
-    firebase
+  handleUploadError = error => {
+    this.setState({ loading: false });
+    console.error(error);
+  };
+
+  handleUploadSuccess = async filename => {
+    const downloadURL = await firebase
       .storage()
-      .ref("photographersimages")
+      .ref("images")
       .child(filename)
-      .getDownloadURL()
-      .then(url => this.setState({ avatarURL: url }));
+      .getDownloadURL();
+
+    this.setState(prevState => ({
+      filenames: [...prevState.filenames, filename],
+      downloadURLs: [...prevState.downloadURLs, downloadURL],
+      progress: 100,
+      loading: false
+    }));
+
   };
 }
 
