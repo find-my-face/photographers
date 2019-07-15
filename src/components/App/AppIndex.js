@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
-
+import "typeface-roboto";
 import Navigation from "../Navigation/NavigationIndex";
 import LandingPage from "../Landing/LandingIndex";
 import SignUpPage from "../SignUp/SignUpIndex";
@@ -10,8 +10,6 @@ import PasswordForgetPage from "../PasswordForget/PasswordForgetIndex";
 import HomePage from "../Home/HomeIndex";
 import AccountPage from "../Account/AccountIndex";
 import ImageUpload from "../ImageUpload/ImageUploadIndex";
-// import AdminPage from "../Admin/AdminIndex";
-import "../../App.css";
 
 import { withAuthentication } from "../Session/SessionIndex";
 
@@ -27,7 +25,6 @@ const App = () => (
       <Route path={ROUTES.HOME} component={HomePage} />
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
       <Route path={ROUTES.IMAGEUPLOAD} component={ImageUpload} />
-      {/* <Route path={ROUTES.ADMIN} component={AdminPage} /> */}
     </div>
   </Router>
 );

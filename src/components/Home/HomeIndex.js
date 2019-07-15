@@ -4,7 +4,7 @@ import { withAuthorisation } from "../Session/SessionIndex";
 const HomePage = () => (
   <div className="App">
     <h1>Home Page</h1>
-    <p>The Home Page is accessible by every signed in user.</p>
+    <h2>Welcome to find my face</h2>
   </div>
 );
 

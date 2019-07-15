@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withFirebase } from "../firebase/FirebaseIndex";
 import * as ROUTES from "../../constants/routes";
+import { Button, TextField } from "@material-ui/core";
 
 const PasswordForgetPage = () => (
   <div>
-    <h1>Password Forget</h1>
+    <h1>Forgotten Your Password?</h1>
     <PasswordForgetForm />
   </div>
 );
@@ -18,7 +19,7 @@ class PasswordForgetFormBase extends Component {
 
   onSubmit = event => {
     const { email } = this.state;
-
+    event.preventDefault();
     this.props.firebase
       .doPasswordReset(email)
       .then(() => {
@@ -27,11 +28,11 @@ class PasswordForgetFormBase extends Component {
       .catch(error => {
         this.setState({ error });
       });
-    event.preventDefault();
   };
 
   onChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
   };
 
   render() {
@@ -40,16 +41,24 @@ class PasswordForgetFormBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <input
+        <TextField
+          id="email"
           name="email"
+          label="Email Address"
+          type="text"
           value={email}
           onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
+          margin="normal"
         />
-        <button disabled={isInvalid} type="submit">
+        <Button
+          disabled={isInvalid}
+          type="submit"
+          color="primary"
+          variant="contained"
+          onClick={this.onSubmit}
+        >
           Reset My Password
-        </button>
+        </Button>
         {error && <p>{error.message}</p>}
       </form>
     );
