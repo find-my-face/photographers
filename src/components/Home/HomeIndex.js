@@ -2,30 +2,30 @@ import React from "react";
 import { withAuthorisation } from "../Session/SessionIndex";
 import { withStyles } from "@material-ui/core/styles";
 
-const styles = theme => ({
-  root: {
+import indigo from "@material-ui/core/colors/indigo";
+
+const shade1 = indigo["100"];
+
+const styles = () => ({
+  header: {
+    background: shade1,
     flexGrow: 1,
     zIndex: 1,
     overflow: "hidden",
     position: "relative",
     display: "flex",
     width: "100%"
-  },
-  toolbar: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(3),
-    height: "92vh"
   }
 });
 
-const HomePage = () => (
-  <div className="App">
-    <h1>Home Page</h1>
-    <h2>Welcome to find my face</h2>
-  </div>
-);
+function HomePage(props) {
+  const { classes } = props;
+  return (
+    <div className={classes.header}>
+      <h1>Welcome to find my face</h1>
+    </div>
+  );
+}
 
 const condition = authUser => !!authUser;
 

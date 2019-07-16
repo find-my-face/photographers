@@ -1,30 +1,23 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
+import FestivalScene from "../../assets/FestivalScene.jpg";
 
-const styles = theme => ({
-  root: {
+const styles = () => ({
+  header: {
     flexGrow: 1,
-    zIndex: 1,
-    overflow: "hidden",
-    position: "relative",
-    display: "flex",
+    zIndex: -1,
+    display: "block",
     width: "100%"
-  },
-  toolbar: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(3),
-    height: "92vh"
   }
 });
 
-const LandingIndex = () => {
+function LandingIndex(props) {
+  const { classes } = props;
   return (
-    <div>
-      <h1>Welcome to find-my-face for Photographers</h1>
+    <div className={classes.header}>
+      <img src={FestivalScene} alt="festival scene" />
     </div>
   );
-};
+}
 
 export default withStyles(styles)(LandingIndex);

@@ -13,20 +13,22 @@ import ImageUpload from "../ImageUpload/ImageUploadIndex";
 
 import { withAuthentication } from "../Session/SessionIndex";
 
-const App = () => (
-  <Router>
-    <div>
-      <Navigation />
-      <hr />
-      <Route exact path={ROUTES.LANDING} component={LandingPage} />
-      <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-      <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-      <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
-      <Route path={ROUTES.HOME} component={HomePage} />
-      <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-      <Route path={ROUTES.IMAGEUPLOAD} component={ImageUpload} />
-    </div>
-  </Router>
-);
+function App() {
+  return (
+    <Router>
+      <div>
+        <Navigation />
+        <hr />
+        <Route exact path={ROUTES.LANDING} component={LandingPage} />
+        <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+        <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+        <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+        <Route path={ROUTES.HOME} component={HomePage} />
+        <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+        <Route path={ROUTES.IMAGEUPLOAD} component={ImageUpload} />
+      </div>
+    </Router>
+  );
+}
 
 export default withAuthentication(App);
