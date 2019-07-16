@@ -71,6 +71,29 @@ const NavigationNonAuth = () => (
       Sign In
     </Link>
   </Typography>
+=======
+  <ul>
+    <li>
+      <Link to={ROUTES.HOME}>Home</Link>
+    </li>
+    <li>
+      <Link to={ROUTES.ACCOUNT}>Account</Link>
+    </li>
+    <li>
+      <Link to={ROUTES.IMAGEUPLOAD}>Upload Images</Link>
+    </li>
+    <li>
+      <SignOutButton />
+    </li>
+  </ul>
+);
+
+const NavigationNonAuth = () => (
+  <ul>
+    <li>
+      <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+    </li>
+  </ul>
 );
 
 export default withStyles(styles)(Navigation);
