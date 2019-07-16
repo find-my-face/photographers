@@ -91,8 +91,8 @@ const PasswordForgetLink = () => (
 );
 
 export default PasswordForgetPage;
-const PasswordForgetForm = withFirebase(PasswordForgetFormBase)(
-  withStyles(styles)
+const PasswordForgetForm = withStyles(styles)(
+  withFirebase(PasswordForgetFormBase)
 );
 
 export { PasswordForgetForm, PasswordForgetLink };

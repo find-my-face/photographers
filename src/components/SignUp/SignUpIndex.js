@@ -4,6 +4,25 @@ import { compose } from "recompose";
 import { withFirebase } from "../firebase/FirebaseIndex";
 import * as ROUTES from "../../constants/routes";
 import { Button, TextField } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    zIndex: 1,
+    overflow: "hidden",
+    position: "relative",
+    display: "flex",
+    width: "100%"
+  },
+  toolbar: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing(3),
+    height: "92vh"
+  }
+});
 
 const SignUpPage = () => (
   <div>
@@ -132,5 +151,5 @@ const SignUpForm = compose(
   withFirebase
 )(SignUpFormBase);
 
-export default SignUpPage;
+export default withStyles(styles)(SignUpPage);
 export { SignUpForm, SignUpLink };

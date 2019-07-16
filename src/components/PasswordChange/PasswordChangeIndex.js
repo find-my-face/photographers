@@ -87,4 +87,4 @@ class PasswordChangeForm extends Component {
   }
 }
 
-export default withFirebase(PasswordChangeForm)(withStyles(styles));
+export default withStyles(styles)(withFirebase(PasswordChangeForm));
