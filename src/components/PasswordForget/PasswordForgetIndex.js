@@ -17,12 +17,14 @@ const styles = () => ({
   }
 });
 
-const PasswordForgetPage = () => (
-  <div>
-    <h1>Forgotten Your Password?</h1>
-    <PasswordForgetForm />
-  </div>
-);
+function PasswordForgetPage() {
+  return (
+    <div>
+      <h1>Forgotten Your Password?</h1>
+      <PasswordForgetForm />
+    </div>
+  );
+}
 
 class PasswordForgetFormBase extends Component {
   state = {
@@ -78,11 +80,13 @@ class PasswordForgetFormBase extends Component {
   }
 }
 
-const PasswordForgetLink = () => (
-  <p>
-    <Link to={ROUTES.PASSWORD_FORGET}>Forgot Password?</Link>
-  </p>
-);
+function PasswordForgetLink() {
+  return (
+    <p>
+      <Link to={ROUTES.PASSWORD_FORGET}>Forgot Password?</Link>
+    </p>
+  );
+}
 
 export default PasswordForgetPage;
 const PasswordForgetForm = withStyles(styles)(

@@ -10,7 +10,6 @@ import PasswordForgetPage from "../PasswordForget/PasswordForgetIndex";
 import HomePage from "../Home/HomeIndex";
 import AccountPage from "../Account/AccountIndex";
 import ImageUpload from "../ImageUpload/ImageUploadIndex";
-
 import { withAuthentication } from "../Session/SessionIndex";
 
 function App() {

@@ -137,11 +137,13 @@ class SignUpFormBase extends Component {
   }
 }
 
-const SignUpLink = () => (
-  <p>
-    <Link to={ROUTES.SIGN_UP}>Sign Up Here</Link>
-  </p>
-);
+function SignUpLink() {
+  return (
+    <p>
+      <Link to={ROUTES.SIGN_UP}>Sign Up Here</Link>
+    </p>
+  );
+}
 
 const SignUpForm = compose(
   withRouter,
