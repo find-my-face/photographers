@@ -3,21 +3,15 @@ import { withFirebase } from "../firebase/FirebaseIndex";
 import { Button, TextField } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 
-const styles = theme => ({
-  root: {
+const styles = () => ({
+  header: {
+    background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
     flexGrow: 1,
     zIndex: 1,
     overflow: "hidden",
     position: "relative",
     display: "flex",
     width: "100%"
-  },
-  toolbar: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(3),
-    height: "92vh"
   }
 });
 
