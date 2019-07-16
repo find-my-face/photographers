@@ -1,6 +1,25 @@
 import React, { Component } from "react";
 import { withFirebase } from "../firebase/FirebaseIndex";
 import { Button, TextField } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    zIndex: 1,
+    overflow: "hidden",
+    position: "relative",
+    display: "flex",
+    width: "100%"
+  },
+  toolbar: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing(3),
+    height: "92vh"
+  }
+});
 
 class PasswordChangeForm extends Component {
   state = {
@@ -68,4 +87,4 @@ class PasswordChangeForm extends Component {
   }
 }
 
-export default withFirebase(PasswordChangeForm);
+export default withFirebase(PasswordChangeForm)(withStyles(styles));

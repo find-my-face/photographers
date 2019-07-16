@@ -1,4 +1,23 @@
 import React from "react";
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    zIndex: 1,
+    overflow: "hidden",
+    position: "relative",
+    display: "flex",
+    width: "100%"
+  },
+  toolbar: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing(3),
+    height: "92vh"
+  }
+});
 
 const LandingIndex = () => {
   return (
@@ -8,4 +27,4 @@ const LandingIndex = () => {
   );
 };
 
-export default LandingIndex;
+export default withStyles(styles)(LandingIndex);

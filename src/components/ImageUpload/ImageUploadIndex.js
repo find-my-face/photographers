@@ -2,7 +2,26 @@ import React, { Component } from "react";
 import firebase from "firebase";
 import FileUploader from "react-firebase-file-uploader";
 import { withAuthorisation } from "../Session/SessionIndex";
-import TextField from "@material-ui/core/TextField";
+import { TextField } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    zIndex: 1,
+    overflow: "hidden",
+    position: "relative",
+    display: "flex",
+    width: "100%"
+  },
+  toolbar: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing(3),
+    height: "92vh"
+  }
+});
 
 class ImageUpload extends Component {
   state = {
@@ -85,4 +104,4 @@ class ImageUpload extends Component {
 
 const condition = authUser => !!authUser;
 
-export default withAuthorisation(condition)(ImageUpload);
+export default withAuthorisation(condition)(withStyles(styles)(ImageUpload));

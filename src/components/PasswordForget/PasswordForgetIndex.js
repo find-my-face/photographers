@@ -3,6 +3,25 @@ import { Link } from "react-router-dom";
 import { withFirebase } from "../firebase/FirebaseIndex";
 import * as ROUTES from "../../constants/routes";
 import { Button, TextField } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    zIndex: 1,
+    overflow: "hidden",
+    position: "relative",
+    display: "flex",
+    width: "100%"
+  },
+  toolbar: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing(3),
+    height: "92vh"
+  }
+});
 
 const PasswordForgetPage = () => (
   <div>
@@ -72,6 +91,8 @@ const PasswordForgetLink = () => (
 );
 
 export default PasswordForgetPage;
-const PasswordForgetForm = withFirebase(PasswordForgetFormBase);
+const PasswordForgetForm = withFirebase(PasswordForgetFormBase)(
+  withStyles(styles)
+);
 
 export { PasswordForgetForm, PasswordForgetLink };
