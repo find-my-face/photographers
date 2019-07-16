@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { compose } from "recompose";
 import { withFirebase } from "../firebase/FirebaseIndex";
-// import { FirebaseContext } from "../Firebase/FirebaseIndex";
-
 import * as ROUTES from "../../constants/routes";
+import { Button, TextField } from "@material-ui/core";
 
 const SignUpPage = () => (
   <div>
@@ -25,7 +24,7 @@ class SignUpFormBase extends Component {
 
   onSubmit = event => {
     const { username, email, passwordOne } = this.state;
-
+    event.preventDefault();
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
@@ -47,12 +46,11 @@ class SignUpFormBase extends Component {
       .catch(error => {
         this.setState({ error });
       });
-
-    event.preventDefault();
   };
 
   onChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
   };
 
   render() {
@@ -65,38 +63,57 @@ class SignUpFormBase extends Component {
       username === "";
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
+      <form className="signUpForm" onSubmit={this.onSubmit}>
+        <TextField
+          id="username"
           name="username"
+          label="Full Name"
+          className="nameField"
+          type="text"
           value={username}
           onChange={this.onChange}
-          type="text"
-          placeholder="Full Name"
+          margin="normal"
         />
-        <input
+        <TextField
+          id="email"
           name="email"
+          label="Email Address"
+          className="emailField"
+          type="text"
           value={email}
           onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
+          margin="normal"
         />
-        <input
+        <TextField
+          id="passwordOne"
           name="passwordOne"
+          label="Password"
+          className="passwordOneField"
+          type="password"
           value={passwordOne}
           onChange={this.onChange}
-          type="password"
-          placeholder="Password"
+          margin="normal"
         />
-        <input
+        <TextField
+          id="passwordTwo"
           name="passwordTwo"
+          label="Confirm Password"
+          className="passwordTwoField"
+          type="password"
           value={passwordTwo}
           onChange={this.onChange}
-          type="password"
-          placeholder="Confirm Password"
+          margin="normal"
         />
-        <button disabled={isInvalid} type="submit">
+
+        <Button
+          disabled={isInvalid}
+          type="submit"
+          color="primary"
+          variant="contained"
+          onClick={this.onSubmit}
+        >
           Sign Up
-        </button>
+        </Button>
 
         {error && <p>{error.message}</p>}
       </form>
@@ -106,7 +123,7 @@ class SignUpFormBase extends Component {
 
 const SignUpLink = () => (
   <p>
-    <Link to={ROUTES.SIGN_UP}>SIGN UP HERE</Link>
+    <Link to={ROUTES.SIGN_UP}>Sign Up Here</Link>
   </p>
 );
 

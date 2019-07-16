@@ -5,6 +5,7 @@ import { SignUpLink } from "../SignUp/SignUpIndex";
 import { PasswordForgetLink } from "../PasswordForget/PasswordForgetIndex";
 import { withFirebase } from "../firebase/FirebaseIndex";
 import * as ROUTES from "../../constants/routes";
+import { Button, TextField } from "@material-ui/core";
 
 const SignInPage = () => (
   <div>
@@ -24,7 +25,7 @@ class SignInFormBase extends Component {
 
   onSubmit = event => {
     const { email, password } = this.state;
-
+    event.preventDefault();
     this.props.firebase
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {
@@ -38,7 +39,8 @@ class SignInFormBase extends Component {
   };
 
   onChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
   };
 
   render() {
@@ -47,23 +49,33 @@ class SignInFormBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <input
+        <TextField
+          id="email"
           name="email"
+          label="Email Address"
+          type="text"
           value={email}
           onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
+          margin="normal"
         />
-        <input
+        <TextField
+          id="password"
           name="password"
+          label="Password"
+          type="password"
           value={password}
           onChange={this.onChange}
-          type="password"
-          placeholder="Password"
+          margin="normal"
         />
-        <button disabled={isInvalid} type="submit">
+        <Button
+          disabled={isInvalid}
+          type="submit"
+          color="primary"
+          variant="contained"
+          onClick={this.onSubmit}
+        >
           Sign In
-        </button>
+        </Button>
         {error && <p>{error.message}</p>}
       </form>
     );

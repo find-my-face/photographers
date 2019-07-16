@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import firebase from "firebase";
 import FileUploader from "react-firebase-file-uploader";
 import { withAuthorisation } from "../Session/SessionIndex";
+import TextField from "@material-ui/core/TextField";
 
 class ImageUpload extends Component {
   state = {
@@ -18,20 +19,37 @@ class ImageUpload extends Component {
     return (
       <div>
         <form>
-          <label>Album Name</label>
-          <input type="text" onChange={this.handleChange} />
+          <TextField
+            id="standard-name"
+            label="Album Name"
+            onChange={this.handleChange}
+            margin="normal"
+          />
+
+          <label
+            style={{
+              backgroundColor: "steelblue",
+              color: "white",
+              padding: 10,
+              borderRadius: 4,
+              pointer: "cursor"
+            }}
+          >
+            Choose images
+            <FileUploader
+              hidden
+              accept="image/*"
+              name="image"
+              storageRef={firebase
+                .storage()
+                .ref(`Photographers/${userID}/${albumName}`)}
+              onUploadStart={this.handleUploadStart}
+              onUploadError={this.handleUploadError}
+              onUploadSuccess={this.handleUploadSuccess}
+              multiple
+            />
+          </label>
         </form>
-        <FileUploader
-          accept="image/*"
-          name="image"
-          storageRef={firebase
-            .storage()
-            .ref(`Photographers/${userID}/${albumName}`)}
-          onUploadStart={this.handleUploadStart}
-          onUploadError={this.handleUploadError}
-          onUploadSuccess={this.handleUploadSuccess}
-          multiple
-        />
       </div>
     );
   }

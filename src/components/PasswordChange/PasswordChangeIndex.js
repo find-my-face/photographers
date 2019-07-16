@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withFirebase } from "../firebase/FirebaseIndex";
+import { Button, TextField } from "@material-ui/core";
 
 class PasswordChangeForm extends Component {
   state = {
@@ -9,7 +10,7 @@ class PasswordChangeForm extends Component {
   };
   onSubmit = event => {
     const { passwordOne, passwordTwo } = this.state;
-
+    event.preventDefault();
     this.props.firebase
       .doPasswordUpdate(passwordOne)
       .then(() => {
@@ -22,7 +23,8 @@ class PasswordChangeForm extends Component {
   };
 
   onChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
   };
 
   render() {
@@ -32,23 +34,34 @@ class PasswordChangeForm extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <input
+        <TextField
+          id="passwordOne"
           name="passwordOne"
+          label="Choose a Password"
+          type="password"
           value={passwordOne}
           onChange={this.onChange}
-          type="password"
-          placeholder="New Password"
+          margin="normal"
         />
-        <input
+        <TextField
+          id="passwordTwo"
           name="passwordTwo"
+          label="Confirm New Password"
+          type="password"
           value={passwordTwo}
           onChange={this.onChange}
-          type="password"
-          placeholder="Confirm New Password"
+          margin="normal"
         />
-        <button disabled={isInvalid} type="submit">
-          Reset My Password
-        </button>
+
+        <Button
+          disabled={isInvalid}
+          type="submit"
+          color="primary"
+          variant="contained"
+          onClick={this.onSubmit}
+        >
+          Change My Password
+        </Button>
         {error && <p>{error.message}</p>}
       </form>
     );
