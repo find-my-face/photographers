@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withFirebase } from "../firebase/FirebaseIndex";
 import * as ROUTES from "../../constants/routes";
-import { Button, TextField } from "@material-ui/core";
+import { Button, TextField, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = () => ({
@@ -55,36 +55,44 @@ class PasswordForgetFormBase extends Component {
     const isInvalid = email === "";
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <TextField
-          id="email"
-          name="email"
-          label="Email Address"
-          type="text"
-          value={email}
-          onChange={this.onChange}
-          margin="normal"
-        />
-        <Button
-          disabled={isInvalid}
-          type="submit"
-          color="primary"
-          variant="contained"
-          onClick={this.onSubmit}
-        >
-          Reset My Password
-        </Button>
-        {error && <p>{error.message}</p>}
-      </form>
+      <div>
+        <Typography variant="h6">Reset your password here:</Typography>
+        <form onSubmit={this.onSubmit}>
+          <TextField
+            id="email"
+            name="email"
+            label="Email Address"
+            type="text"
+            value={email}
+            onChange={this.onChange}
+            margin="normal"
+          />
+          <Button
+            disabled={isInvalid}
+            type="submit"
+            color="primary"
+            variant="contained"
+            onClick={this.onSubmit}
+          >
+            Reset My Password
+          </Button>
+          {error && <p>{error.message}</p>}
+        </form>
+      </div>
     );
   }
 }
 
 function PasswordForgetLink() {
   return (
-    <p>
-      <Link to={ROUTES.PASSWORD_FORGET}>Forgot Password?</Link>
-    </p>
+    <Typography variant="h6">
+      <Link
+        to={ROUTES.PASSWORD_FORGET}
+        style={{ textDecoration: "none", color: "inherit" }}
+      >
+        Forgotten Your Password?
+      </Link>
+    </Typography>
   );
 }
 

@@ -2,26 +2,36 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SignOutButton from "../SignOut/SignOutIndex";
 import * as ROUTES from "../../constants/routes";
-import { withStyles } from "@material-ui/core/styles";
-import { Typography, AppBar, Toolbar, IconButton } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  Typography,
+  IconButton,
+  Button,
+  Menu,
+  MenuItem
+} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { AuthUserContext } from "../Session/SessionIndex";
+import indigo from "@material-ui/core/colors/indigo";
 
-const styles = theme => ({
+const shade1 = indigo["100"];
+const shade2 = indigo["900"];
+
+const useStyles = makeStyles(theme => ({
   root: {
-    background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+    background: `linear-gradient(45deg, ${shade1}, ${shade2} 90%)`,
     flexGrow: 1
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(3)
   },
   title: {
     flexGrow: 1
   }
-});
+}));
 
 function Navigation(props) {
-  const { classes } = props;
+  const classes = useStyles();
   return (
     <div className={classes.root}>
       <AuthUserContext.Consumer>
@@ -31,38 +41,60 @@ function Navigation(props) {
   );
 }
 
-function NavigationAuth(props) {
-  // const { classes } = props;
+function NavigationAuth() {
+  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  function handleClick(event) {
+    setAnchorEl(event.currentTarget);
+  }
+
+  function handleClose() {
+    setAnchorEl(null);
+  }
   return (
     <div>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            // className={classes.menuButton}
-            color="inherit"
-            aria-label="Menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" /*className={classes.title}*/>
+      <IconButton
+        aria-controls="simple-menu"
+        aria-haspopup="true"
+        onClick={handleClick}
+        edge="end"
+        className={classes.menuButton}
+        color="inherit"
+        aria-label="Menu"
+      >
+        <MenuIcon />
+      </IconButton>
+
+      <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <MenuItem onClick={handleClose}>
+          <Typography>
             <Link
               to={ROUTES.HOME}
-              style={{
-                textDecoration: "none",
-                color: "inherit"
-              }}
+              style={{ textDecoration: "none", color: "inherit" }}
             >
               Home
             </Link>
-
+          </Typography>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <Typography>
             <Link
               to={ROUTES.ACCOUNT}
               style={{ textDecoration: "none", color: "inherit" }}
             >
               Account
             </Link>
-
+          </Typography>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <Typography>
             <Link
               to={ROUTES.IMAGEUPLOAD}
               style={{ textDecoration: "none", color: "inherit" }}
@@ -70,27 +102,40 @@ function NavigationAuth(props) {
               Upload Images
             </Link>
           </Typography>
-          <SignOutButton />
-        </Toolbar>
-      </AppBar>
+        </MenuItem>
+      </Menu>
+      <SignOutButton color="inherit" />
     </div>
   );
 }
 
-function NavigationNonAuth(props) {
-  // const { classes } = props;
+function NavigationNonAuth() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  function handleClick(event) {
+    setAnchorEl(event.currentTarget);
+  }
+
+  function handleClose() {
+    setAnchorEl(null);
+  }
   return (
     <div>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            // className={classes.menuButton}
-            color="inherit"
-            aria-label="Menu"
-          >
-            <MenuIcon />
-          </IconButton>
+      <Button
+        aria-controls="simple-menu"
+        aria-haspopup="true"
+        onClick={handleClick}
+      >
+        <MenuIcon />
+      </Button>
+      <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <MenuItem onClick={handleClose}>
           <Typography>
             <Link
               to={ROUTES.SIGN_IN}
@@ -99,10 +144,10 @@ function NavigationNonAuth(props) {
               Sign In
             </Link>
           </Typography>
-        </Toolbar>
-      </AppBar>
+        </MenuItem>
+      </Menu>
     </div>
   );
 }
 
-export default withStyles(styles)(Navigation);
+export default Navigation;

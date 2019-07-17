@@ -1,7 +1,7 @@
 import React from "react";
 import { withAuthorisation } from "../Session/SessionIndex";
 import { withStyles } from "@material-ui/core/styles";
-
+import Photographer from "../../assets/Woman-Photographer-Photograph-Background-Wallpaper-1659515.jpg";
 import indigo from "@material-ui/core/colors/indigo";
 
 const shade1 = indigo["100"];
@@ -23,6 +23,7 @@ function HomePage(props) {
   return (
     <div className={classes.header}>
       <h1>Welcome to find my face</h1>
+      <img src={Photographer} alt="photographer" />
     </div>
   );
 }
