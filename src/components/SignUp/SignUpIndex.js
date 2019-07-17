@@ -3,7 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import { compose } from "recompose";
 import { withFirebase } from "../firebase/FirebaseIndex";
 import * as ROUTES from "../../constants/routes";
-import { Button, TextField } from "@material-ui/core";
+import { Button, TextField, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = () => ({
@@ -139,9 +139,14 @@ class SignUpFormBase extends Component {
 
 function SignUpLink() {
   return (
-    <p>
-      <Link to={ROUTES.SIGN_UP}>Sign Up Here</Link>
-    </p>
+    <Typography variant="h6">
+      <Link
+        to={ROUTES.SIGN_UP}
+        style={{ textDecoration: "none", color: "inherit" }}
+      >
+        Sign Up Here
+      </Link>
+    </Typography>
   );
 }
 

@@ -2,24 +2,17 @@ import React, { Component } from "react";
 import firebase from "firebase";
 import FileUploader from "react-firebase-file-uploader";
 import { withAuthorisation } from "../Session/SessionIndex";
-import { TextField } from "@material-ui/core";
+import { TextField, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
-  root: {
+  header: {
     flexGrow: 1,
     zIndex: 1,
     overflow: "hidden",
     position: "relative",
     display: "flex",
     width: "100%"
-  },
-  toolbar: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(3),
-    height: "92vh"
   }
 });
 
@@ -37,6 +30,8 @@ class ImageUpload extends Component {
     const userID = firebase.auth().currentUser.uid;
     return (
       <div>
+        <Typography variant="h6">Upload your images here:</Typography>
+        <br />
         <form>
           <TextField
             id="standard-name"

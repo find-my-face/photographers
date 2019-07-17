@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withFirebase } from "../firebase/FirebaseIndex";
-import { Button, TextField } from "@material-ui/core";
+import { Button, TextField, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = () => ({
@@ -46,37 +46,41 @@ class PasswordChangeForm extends Component {
     const isInvalid = passwordOne !== passwordTwo || passwordOne === "";
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <TextField
-          id="passwordOne"
-          name="passwordOne"
-          label="Choose a Password"
-          type="password"
-          value={passwordOne}
-          onChange={this.onChange}
-          margin="normal"
-        />
-        <TextField
-          id="passwordTwo"
-          name="passwordTwo"
-          label="Confirm New Password"
-          type="password"
-          value={passwordTwo}
-          onChange={this.onChange}
-          margin="normal"
-        />
+      <div>
+        <Typography variant="h6">Update your password here:</Typography>
 
-        <Button
-          disabled={isInvalid}
-          type="submit"
-          color="primary"
-          variant="contained"
-          onClick={this.onSubmit}
-        >
-          Change My Password
-        </Button>
-        {error && <p>{error.message}</p>}
-      </form>
+        <form onSubmit={this.onSubmit}>
+          <TextField
+            id="passwordOne"
+            name="passwordOne"
+            label="Choose a Password"
+            type="password"
+            value={passwordOne}
+            onChange={this.onChange}
+            margin="normal"
+          />
+          <TextField
+            id="passwordTwo"
+            name="passwordTwo"
+            label="Confirm New Password"
+            type="password"
+            value={passwordTwo}
+            onChange={this.onChange}
+            margin="normal"
+          />
+
+          <Button
+            disabled={isInvalid}
+            type="submit"
+            color="primary"
+            variant="contained"
+            onClick={this.onSubmit}
+          >
+            Change My Password
+          </Button>
+          {error && <p>{error.message}</p>}
+        </form>
+      </div>
     );
   }
 }
