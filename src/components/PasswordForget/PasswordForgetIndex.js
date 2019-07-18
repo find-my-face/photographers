@@ -20,7 +20,7 @@ const styles = () => ({
 function PasswordForgetPage() {
   return (
     <div>
-      <h1>Forgotten Your Password?</h1>
+      <h1 className="forgottenPasswordTitle">Forgotten Your Password?</h1>
       <PasswordForgetForm />
     </div>
   );
