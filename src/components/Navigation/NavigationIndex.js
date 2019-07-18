@@ -12,18 +12,15 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { AuthUserContext } from "../Session/SessionIndex";
-import indigo from "@material-ui/core/colors/indigo";
-
-const shade1 = indigo["100"];
-const shade2 = indigo["900"];
 
 const useStyles = makeStyles(theme => ({
   root: {
-    background: `linear-gradient(45deg, ${shade1}, ${shade2} 90%)`,
+    position: "relative",
     flexGrow: 1
   },
   menuButton: {
-    marginRight: theme.spacing(3)
+    marginRight: theme.spacing(3),
+    color: theme.palette.common.white
   },
   title: {
     flexGrow: 1
@@ -33,7 +30,16 @@ const useStyles = makeStyles(theme => ({
 function Navigation(props) {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <div
+      className={classes.root}
+      position="static"
+      style={{
+        background: "transparent !important",
+        boxShadow: "none",
+        marginBottom: "-50px",
+        zIndex: "99"
+      }}
+    >
       <AuthUserContext.Consumer>
         {authUser => (authUser ? <NavigationAuth /> : <NavigationNonAuth />)}
       </AuthUserContext.Consumer>
@@ -60,7 +66,6 @@ function NavigationAuth() {
         onClick={handleClick}
         edge="end"
         className={classes.menuButton}
-        color="inherit"
         aria-label="Menu"
       >
         <MenuIcon />
@@ -96,10 +101,10 @@ function NavigationAuth() {
         <MenuItem onClick={handleClose}>
           <Typography>
             <Link
-              to={ROUTES.IMAGEUPLOAD}
+              to={ROUTES.ALBUMS}
               style={{ textDecoration: "none", color: "inherit" }}
             >
-              Upload Images
+              Albums
             </Link>
           </Typography>
         </MenuItem>
@@ -110,6 +115,7 @@ function NavigationAuth() {
 }
 
 function NavigationNonAuth() {
+  const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   function handleClick(event) {
@@ -125,6 +131,7 @@ function NavigationNonAuth() {
         aria-controls="simple-menu"
         aria-haspopup="true"
         onClick={handleClick}
+        className={classes.menuButton}
       >
         <MenuIcon />
       </Button>

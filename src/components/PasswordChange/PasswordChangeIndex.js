@@ -53,7 +53,7 @@ class PasswordChangeForm extends Component {
           <TextField
             id="passwordOne"
             name="passwordOne"
-            label="Choose a Password"
+            label="Choose Password"
             type="password"
             value={passwordOne}
             onChange={this.onChange}
@@ -62,7 +62,7 @@ class PasswordChangeForm extends Component {
           <TextField
             id="passwordTwo"
             name="passwordTwo"
-            label="Confirm New Password"
+            label="Confirm Password"
             type="password"
             value={passwordTwo}
             onChange={this.onChange}

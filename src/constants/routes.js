@@ -5,4 +5,4 @@ export const SIGN_OUT = "/home";
 export const HOME = "/home";
 export const ACCOUNT = "/account";
 export const PASSWORD_FORGET = "/pw-forget";
-export const IMAGEUPLOAD = "/upload-images";
+export const ALBUMS = "/albums";

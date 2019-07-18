@@ -1,20 +1,94 @@
-.gallery {
-  margin: 5px;
-  border: 1px solid #ccc;
-  float: left;
-  width: 180px;
+body {
+  padding: 0;
+  margin: 0;
+  background-color: black;
 }
 
-.gallery:hover {
-  border: 1px solid #777;
+.signInContainer {
+  position: relative;
+  text-align: center;
 }
 
-.gallery img {
-  width: 100%;
-  height: auto;
+.welcomeImage {
+  z-index: -1;
+}
+
+.logo {
+  position: absolute;
+  z-index: 1;
+  margin-left: 70%;
+  margin-top: 2.5%;
+}
+
+.albumsImage {
+  position: absolute;
+  z-index: -1;
+  margin-top: -25px;
+  margin-bottom: 0px;
+}
+
+.accountImage {
+  position: absolute;
+  z-index: -1;
+}
+
+.photographerContainer {
+  position: relative;
+  text-align: center;
+  z-index: -1;
+}
+
+.albumsContainer {
+  position: absolute;
+  text-align: center;
+  z-index: 99;
+}
+
+.signInTitle {
+  position: absolute;
+  color: white;
+  text-align: center;
+  top: 30%;
+  left: 50%;
+}
+
+.signInForm {
+  position: absolute;
+  color: white;
+  text-align: center;
+  top: 40%;
+  left: 50%;
+}
+
+.uploadImageForm {
+  position: absolute;
+  text-align: center;
+  top: 40%;
+  left: 35%;
+}
+
+.changePasswordForm {
+  position: absolute;
+  color: white;
+  text-align: center;
+  top: 40%;
+  left: 60%;
+}
+
+.forgottenPasswordTitle {
+  position: absolute;
+  color: white;
+  text-align: center;
+  top: 30%;
+  left: 50%;
 }
 
 .desc {
-  padding: 15px;
-  text-align: center;
+  font-size: 25px;
+  padding-bottom: 1px;
+}
+
+.uploadText {
+  padding-bottom: 15%;
+  color: white;
 }
