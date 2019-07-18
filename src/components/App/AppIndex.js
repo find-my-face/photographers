@@ -1,4 +1,5 @@
 import React from "react";
+import "../../App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 import "typeface-roboto";
@@ -17,7 +18,7 @@ function App() {
     <Router>
       <div>
         <Navigation />
-        <hr />
+        <br />
         <Route exact path={ROUTES.LANDING} component={LandingPage} />
         <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
         <Route path={ROUTES.SIGN_IN} component={SignInPage} />

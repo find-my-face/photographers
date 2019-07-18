@@ -22,8 +22,8 @@ function HomePage(props) {
   const { classes } = props;
   return (
     <div className={classes.header}>
-      <h1>Welcome to find my face</h1>
-      <img src={Photographer} alt="photographer" />
+      <h1>Welcome</h1>
+      <img src={Photographer} alt="photographer" width="100%" height="100%" />
     </div>
   );
 }

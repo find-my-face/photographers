@@ -4,6 +4,10 @@ import FileUploader from "react-firebase-file-uploader";
 import { withAuthorisation } from "../Session/SessionIndex";
 import { TextField, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
+import bikes1 from "../../assets/bikes1.jpg";
+import wedding1 from "../../assets/wedding1.jpg";
+import fest3 from "../../assets/fest3.jpg";
+import soldiers1 from "../../assets/soldiers1.jpg";
 
 const styles = theme => ({
   header: {
@@ -64,6 +68,34 @@ class ImageUpload extends Component {
             />
           </label>
         </form>
+        <br />
+        <div className="gallery">
+          <a target="_blank" href="bikes1.jpg">
+            <img src={bikes1} alt="cyclists" width="600" height="400" />
+          </a>
+          <div className="desc">French Cycling Shoot</div>
+        </div>
+
+        <div className="gallery">
+          <a target="_blank" href="wedding1.jpg">
+            <img src={wedding1} alt="wedding" width="600" height="400" />
+          </a>
+          <div className="desc">Smith Wedding</div>
+        </div>
+
+        <div className="gallery">
+          <a target="_blank" href="fest3.jpg">
+            <img src={fest3} alt="wedding" width="600" height="400" />
+          </a>
+          <div className="desc">Glastonbury 2019</div>
+        </div>
+
+        <div className="gallery">
+          <a target="_blank" href="soldiers1.jpg">
+            <img src={soldiers1} alt="wedding" width="600" height="400" />
+          </a>
+          <div className="desc">Soldiers' March</div>
+        </div>
       </div>
     );
   }

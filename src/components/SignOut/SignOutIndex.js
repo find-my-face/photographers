@@ -18,6 +18,7 @@ const styles = () => ({
 function SignOutButton({ firebase }) {
   return (
     <Button
+      className="signOutButton"
       type="button"
       onClick={firebase.doSignOut}
       color="primary"
